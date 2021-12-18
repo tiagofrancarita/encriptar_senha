@@ -5,6 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +27,7 @@ public class UsuarioModel {
 	@Column(unique = true)
 	private String login;
 	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
 	public Integer getId() {
